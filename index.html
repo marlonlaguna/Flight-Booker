@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="moment.js">  </script>
+  <link rel="stylesheet" href="index.css">
+
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl">
+        <div class="counterPanel panel panel-primary " >
+            <div class="panel-heading">Flight Booker</div>
+            <div class="panel-body">
+                <form name="myForm">
+                  <div class="form-group">
+                   
+                    <select class="form-control" id="sel1" ng-model="selectControl" ng-change="cleanValue();">
+                     
+                      <option value="1" selected>one-way fligth</option>
+                      <option value="2">return flight</option>                     
+                    </select>
+                  </div>
+                    <div class="form-group">
+ 
+                      <input type="date" class="form-control" id="T1" ng-model="t1" >
+                    </div>
+                    <div class="form-group">
+                  
+                        <input type="date" class="form-control"  ng-show="selectControl == 2" ng-disabled="selectControl != '2'" id="T2" ng-model="t2">
+                      </div>
+                      <div class="form-group">
+                        <button type="button" ng-click="reserve();" ng-disabled="t1 == null || (selectControl == '2' && t2 == null) || (selectControl == '2' && t2 <= t1)" class="btn btn-primary" style="width: 100%;">Book</button>
+                        
+                      </div>
+                      
+                </form>
+            </div>
+          </div>
+      
+    </body>
+</html>
+<script src="index.js">  </script>
